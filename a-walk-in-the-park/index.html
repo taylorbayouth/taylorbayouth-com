@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Walk in the Park: a puzzle game for iPhone</title>
+<meta name="description" content="Lem, a pigeon, has never seen the ocean. A puzzle game for iPhone and iPad about a very long walk.">
+<meta property="og:title" content="A Walk in the Park">
+<meta property="og:description" content="A pigeon. A postcard. A very long walk.">
+<meta property="og:image" content="https://www.taylorbayouth.com/a-walk-in-the-park/img/hero.jpg">
+<link rel="apple-touch-icon" href="/a-walk-in-the-park/img/apple-touch-icon.png">
+<link rel="icon" href="/a-walk-in-the-park/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#fff8ee; --ink:#2a2140; --muted:#6c6280; --purple:#8f7bc8; --gold:#f4b928; --card:#ffffff; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1a1626; --ink:#f4effa; --muted:#b2a8c6; --card:#241f33; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.6 Nunito, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  a { color:inherit; }
+  img { display:block; max-width:100%; }
+  .hero { position:relative; min-height:min(88vh, 720px); display:flex; flex-direction:column; justify-content:flex-end; align-items:center; text-align:center; color:#fff; padding:40px 20px 64px;
+    background:linear-gradient(to bottom, rgba(20,12,40,.15) 30%, rgba(20,12,40,.7)), url(/a-walk-in-the-park/img/hero.jpg) center/cover no-repeat; }
+  .hero .back { position:absolute; top:20px; left:20px; font-size:14px; text-decoration:none; opacity:.85; }
+  .hero .logo { width:min(560px, 86vw); margin-bottom:18px; filter:drop-shadow(0 3px 12px rgba(0,0,0,.35)); }
+  .hero p { font-size:22px; font-weight:600; margin:0 0 28px; text-shadow:0 2px 10px rgba(0,0,0,.4); }
+  .badge { display:inline-flex; align-items:center; gap:10px; background:#000; color:#fff; border-radius:12px; padding:10px 20px; font-weight:600; font-size:16px; text-decoration:none; }
+  .badge svg { width:22px; height:22px; fill:#fff; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 20px; }
+  section { padding:72px 0; }
+  h2 { font-size:30px; font-weight:800; line-height:1.2; margin:0 0 16px; }
+  .story { display:grid; grid-template-columns:120px 1fr; gap:28px; align-items:center; }
+  .story img { width:120px; border-radius:26px; box-shadow:0 10px 30px rgba(60,40,110,.25); }
+  .story p { color:var(--muted); margin:0 0 12px; }
+  .worlds { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .worlds figure { margin:0; background:var(--card); border-radius:16px; overflow:hidden; box-shadow:0 4px 16px rgba(60,40,110,.1); }
+  .worlds img { aspect-ratio:16/9; object-fit:cover; width:100%; }
+  .worlds figcaption { padding:12px 16px 14px; font-size:15px; color:var(--muted); }
+  .worlds b { color:var(--ink); display:block; font-size:17px; }
+  .facts { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; text-align:center; }
+  .facts div { background:var(--card); border-radius:16px; padding:22px 14px; }
+  .facts b { display:block; font-size:28px; font-weight:800; color:var(--purple); }
+  .facts span { font-size:15px; color:var(--muted); }
+  footer { padding:40px 20px 56px; text-align:center; font-size:15px; color:var(--muted); }
+  footer a { margin:0 10px; }
+  @media (max-width:600px) {
+    .hero p { font-size:19px; }
+    section { padding:52px 0; }
+    .story { grid-template-columns:1fr; }
+    .worlds, .facts { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <a class="back" href="/">&larr; taylorbayouth.com</a>
+  <img class="logo" src="/a-walk-in-the-park/img/logo.svg" alt="A Walk in the Park">
+  <p>A pigeon. A postcard. A very long walk.</p>
+  <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 4.9c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg>Coming soon to iPhone and iPad</span>
+</header>
+
+<section>
+  <div class="wrap story">
+    <img src="/a-walk-in-the-park/img/icon.png" alt="Lem the pigeon">
+    <div>
+      <h2>Lem has never seen the ocean.</h2>
+      <p>Nobody at the park has. There's only a postcard under the bench that says WISH YOU WERE HERE. So Lem picks a morning and starts walking. Flying would be simpler. Lem doesn't fly.</p>
+      <p>Place a few blocks, press play, and watch Lem go. Every level is a small puzzle with one good idea in it. Get it, and it feels obvious.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>One long walk</h2>
+    <div class="worlds">
+      <figure><img src="/a-walk-in-the-park/img/picnic.jpg" alt="" loading="lazy"><figcaption><b>The Picnic</b>Lunch with strangers. Try to look invited.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/quarry.jpg" alt="" loading="lazy"><figcaption><b>The Quarry</b>Blue water. Entirely the wrong kind.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/factory.jpg" alt="" loading="lazy"><figcaption><b>The Factory</b>A smiling cookie is not a guarantee.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/scrapyard.jpg" alt="" loading="lazy"><figcaption><b>The Scrapyard</b>Beware of dog. Trust the rat.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/canal.jpg" alt="" loading="lazy"><figcaption><b>The Canal</b>Someone knows the way. Ask.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/coast.jpg" alt="" loading="lazy"><figcaption><b>The Coast</b>The postcard left most of it out.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap facts">
+    <div><b>8</b><span>worlds</span></div>
+    <div><b>80+</b><span>puzzles</span></div>
+    <div><b>0</b><span>ads, accounts or tracking</span></div>
+  </div>
+</section>
+
+<footer>
+  <a href="/a-walk-in-the-park/privacy">Privacy policy</a>
+  <a href="mailto:hello@taylorbayouth.com">Contact</a>
+  <div style="margin-top:12px">&copy; 2026 Bayouth Ventures, LLC</div>
+</footer>
+
+</body>
+</html>
