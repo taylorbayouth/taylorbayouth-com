@@ -3,94 +3,243 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A Walk in the Park: a puzzle game for iPhone</title>
-<meta name="description" content="Lem, a pigeon, has never seen the ocean. A puzzle game for iPhone and iPad about a very long walk.">
+<title>A Walk in the Park: a puzzle game for iPhone and iPad</title>
+<meta name="description" content="Lem the pigeon has never seen the ocean. Place the blocks, press Play and watch Lem walk. 80+ puzzles, from the park bench to the coast. No ads. No timers. No flying.">
 <meta property="og:title" content="A Walk in the Park">
-<meta property="og:description" content="A pigeon. A postcard. A very long walk.">
-<meta property="og:image" content="https://www.taylorbayouth.com/a-walk-in-the-park/img/hero.jpg">
+<meta property="og:description" content="Lem the pigeon has never seen the ocean. 80+ puzzles, from the park bench to the coast. No ads. No timers. No flying.">
+<meta property="og:image" content="https://www.taylorbayouth.com/a-walk-in-the-park/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="apple-touch-icon" href="/a-walk-in-the-park/img/apple-touch-icon.png">
 <link rel="icon" href="/a-walk-in-the-park/img/apple-touch-icon.png">
+<link rel="preload" as="image" href="/a-walk-in-the-park/img/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#fff8ee; --ink:#2a2140; --muted:#6c6280; --purple:#8f7bc8; --gold:#f4b928; --card:#ffffff; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#1a1626; --ink:#f4effa; --muted:#b2a8c6; --card:#241f33; } }
+  :root { --bg:#fff8ee; --ink:#2a2140; --muted:#6c6280; --purple:#8f7bc8; --gold:#f4b928; --card:#ffffff; --line:rgba(60,40,110,.1); }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1a1626; --ink:#f4effa; --muted:#b2a8c6; --card:#241f33; --line:rgba(255,255,255,.08); } }
   * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.6 Nunito, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.6 Nunito, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing:antialiased; }
   a { color:inherit; }
-  img { display:block; max-width:100%; }
-  .hero { position:relative; min-height:min(88vh, 720px); display:flex; flex-direction:column; justify-content:flex-end; align-items:center; text-align:center; color:#fff; padding:40px 20px 64px;
-    background:linear-gradient(to bottom, rgba(20,12,40,.15) 30%, rgba(20,12,40,.7)), url(/a-walk-in-the-park/img/hero.jpg) center/cover no-repeat; }
-  .hero .back { position:absolute; top:20px; left:20px; font-size:14px; text-decoration:none; opacity:.85; }
-  .hero .logo { width:min(560px, 86vw); margin-bottom:18px; filter:drop-shadow(0 3px 12px rgba(0,0,0,.35)); }
-  .hero p { font-size:22px; font-weight:600; margin:0 0 28px; text-shadow:0 2px 10px rgba(0,0,0,.4); }
-  .badge { display:inline-flex; align-items:center; gap:10px; background:#000; color:#fff; border-radius:12px; padding:10px 20px; font-weight:600; font-size:16px; text-decoration:none; }
-  .badge svg { width:22px; height:22px; fill:#fff; }
-  .wrap { max-width:760px; margin:0 auto; padding:0 20px; }
-  section { padding:72px 0; }
-  h2 { font-size:30px; font-weight:800; line-height:1.2; margin:0 0 16px; }
-  .story { display:grid; grid-template-columns:120px 1fr; gap:28px; align-items:center; }
-  .story img { width:120px; border-radius:26px; box-shadow:0 10px 30px rgba(60,40,110,.25); }
-  .story p { color:var(--muted); margin:0 0 12px; }
-  .worlds { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-  .worlds figure { margin:0; background:var(--card); border-radius:16px; overflow:hidden; box-shadow:0 4px 16px rgba(60,40,110,.1); }
-  .worlds img { aspect-ratio:16/9; object-fit:cover; width:100%; }
-  .worlds figcaption { padding:12px 16px 14px; font-size:15px; color:var(--muted); }
-  .worlds b { color:var(--ink); display:block; font-size:17px; }
-  .facts { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; text-align:center; }
-  .facts div { background:var(--card); border-radius:16px; padding:22px 14px; }
-  .facts b { display:block; font-size:28px; font-weight:800; color:var(--purple); }
+  img, video { display:block; max-width:100%; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 24px; }
+  .narrow { max-width:720px; }
+  section { padding:88px 0; }
+  h2 { font-size:clamp(28px, 4vw, 38px); font-weight:900; line-height:1.15; margin:0 0 18px; letter-spacing:-.01em; }
+  .eyebrow { font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--purple); margin:0 0 10px; }
+  p { margin:0 0 14px; }
+  .muted { color:var(--muted); }
+
+  /* App Store badge */
+  .badge { display:inline-flex; align-items:center; gap:12px; background:#000; color:#fff; border:1.5px solid rgba(255,255,255,.85); border-radius:14px; padding:9px 22px 9px 16px; text-decoration:none; transition:transform .15s ease; }
+  .badge:hover { transform:translateY(-2px); }
+  .badge svg { width:30px; height:30px; fill:#fff; flex:none; }
+  .badge span { display:flex; flex-direction:column; line-height:1.05; text-align:left; }
+  .badge small { font-size:12px; font-weight:600; letter-spacing:.02em; }
+  .badge b { font-size:24px; font-weight:600; letter-spacing:-.01em; font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+
+  /* Hero */
+  .hero { position:relative; min-height:min(92vh, 860px); display:flex; align-items:center; color:#fff; overflow:hidden;
+    background:#2a2140 url(/a-walk-in-the-park/img/hero.jpg) 30% center/cover no-repeat; }
+  .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,12,40,0) 35%, rgba(20,12,40,.45) 100%); }
+  .hero .back { position:absolute; top:20px; left:24px; z-index:2; font-size:14px; font-weight:600; text-decoration:none; opacity:.9; text-shadow:0 1px 6px rgba(0,0,0,.4); }
+  .hero .inner { position:relative; z-index:1; width:100%; max-width:1240px; margin:0 auto; padding:80px 24px; display:flex; justify-content:flex-end; }
+  .hero .copy { width:min(520px, 100%); text-align:center; }
+  .hero .logo { width:100%; margin:0 auto 22px; filter:drop-shadow(0 4px 14px rgba(0,0,0,.35)); }
+  .hero .tag { font-size:clamp(20px, 2.4vw, 26px); font-weight:800; line-height:1.3; margin:0 0 10px; text-shadow:0 2px 12px rgba(0,0,0,.45); }
+  .hero .sub { font-size:17px; font-weight:600; margin:0 0 28px; opacity:.95; text-shadow:0 2px 10px rgba(0,0,0,.45); }
+
+  /* Story */
+  .story { display:grid; grid-template-columns:140px 1fr; gap:36px; align-items:start; }
+  .story img { width:140px; border-radius:30px; box-shadow:0 12px 34px rgba(60,40,110,.25); }
+  .story p { color:var(--muted); }
+  blockquote { margin:22px 0; padding:4px 0 4px 20px; border-left:4px solid var(--gold); font-size:22px; font-weight:800; line-height:1.35; color:var(--ink); }
+  blockquote cite { display:block; margin-top:6px; font-size:15px; font-weight:600; font-style:normal; color:var(--muted); }
+
+  /* How it plays */
+  .plays { position:relative; color:#f4effa; background:#1b2340 url(/a-walk-in-the-park/img/bg-quarry.jpg) center/cover no-repeat; }
+  .plays::before { content:""; position:absolute; inset:0; background:rgba(16,20,44,.55); }
+  .plays .wrap { position:relative; }
+  .plays .eyebrow { color:var(--gold); }
+  .plays .lede { display:grid; grid-template-columns:1fr 1.25fr; gap:44px; align-items:center; }
+  .plays p { color:#d3cde4; }
+  .clip { margin:0; border-radius:18px; overflow:hidden; background:#000; box-shadow:0 18px 50px rgba(0,0,0,.45); aspect-ratio:1280/590; }
+  .clip video { width:100%; height:100%; object-fit:cover; }
+  .clips { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:44px; }
+  .clips figure { margin:0; }
+  .clips figcaption { margin-top:10px; font-size:15px; color:#b9b2cf; }
+
+  /* Blocks */
+  .cast { margin:6px 0 40px; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(60,40,110,.15); }
+  .cast img { width:100%; }
+  .blocks { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  .blocks div { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 20px 18px; }
+  .blocks b { display:block; font-size:19px; font-weight:900; margin-bottom:4px; }
+  .blocks p { margin:0; font-size:16px; color:var(--muted); line-height:1.5; }
+  .after { margin-top:32px; color:var(--muted); }
+
+  /* Worlds */
+  .worlds { display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; counter-reset:w; }
+  .worlds figure { margin:0; background:var(--card); border-radius:16px; overflow:hidden; box-shadow:0 4px 16px rgba(60,40,110,.1); counter-increment:w; }
+  .worlds img { aspect-ratio:4/3; object-fit:cover; width:100%; }
+  .worlds figcaption { padding:12px 16px 16px; font-size:15px; line-height:1.45; color:var(--muted); }
+  .worlds b { color:var(--ink); display:block; font-size:17px; font-weight:900; margin-bottom:2px; }
+  .worlds b::before { content:counter(w) ". "; color:var(--purple); }
+
+  /* Facts */
+  .facts { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; text-align:center; }
+  .facts div { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px 14px; }
+  .facts b { display:block; font-size:34px; font-weight:900; color:var(--purple); line-height:1.1; }
   .facts span { font-size:15px; color:var(--muted); }
+
+  /* Made */
+  .made p { color:var(--muted); }
+
+  /* Final CTA */
+  .cta { position:relative; text-align:center; padding:140px 0 130px; color:#2a2140; background:#cfe0f3 url(/a-walk-in-the-park/img/bg-coast.jpg) center/cover no-repeat; }
+  .cta h2 { font-size:clamp(34px, 5.5vw, 56px); letter-spacing:.06em; text-transform:uppercase; margin-bottom:10px; }
+  .cta p { font-size:19px; font-weight:600; margin-bottom:30px; color:#4a4064; }
+
   footer { padding:40px 20px 56px; text-align:center; font-size:15px; color:var(--muted); }
   footer a { margin:0 10px; }
-  @media (max-width:600px) {
-    .hero p { font-size:19px; }
-    section { padding:52px 0; }
-    .story { grid-template-columns:1fr; }
-    .worlds, .facts { grid-template-columns:1fr; }
+
+  @media (max-width:900px) {
+    .plays .lede { grid-template-columns:1fr; }
+    .worlds { grid-template-columns:repeat(2, 1fr); }
+    .blocks { grid-template-columns:repeat(2, 1fr); }
   }
+  @media (max-width:640px) {
+    section { padding:60px 0; }
+    .hero { min-height:auto; background-position:28% top; background-size:auto 62vh; background-color:#2a2140; }
+    .hero::before { background:linear-gradient(to bottom, rgba(20,12,40,0) 30vh, #2a2140 62vh); }
+    .hero .inner { padding:44vh 22px 52px; justify-content:center; }
+    .story { grid-template-columns:1fr; gap:22px; }
+    .story img { width:110px; border-radius:24px; }
+    .clips { grid-template-columns:1fr; }
+    .blocks { grid-template-columns:1fr; }
+    .facts { gap:10px; } .facts div { padding:18px 8px; } .facts b { font-size:28px; } .facts span { font-size:13px; }
+    .worlds { gap:12px; }
+    .worlds figcaption { padding:10px 12px 12px; font-size:14px; }
+    .cta { padding:96px 0 90px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .badge { transition:none; } }
 </style>
 </head>
 <body>
 
+<!-- Set the real App Store URL here once the listing is live. Every badge on the page uses it. -->
+<script>window.APP_STORE_URL = "https://apps.apple.com/app/idXXXXXXXXXX";</script>
+
 <header class="hero">
   <a class="back" href="/">&larr; taylorbayouth.com</a>
-  <img class="logo" src="/a-walk-in-the-park/img/logo.svg" alt="A Walk in the Park">
-  <p>A pigeon. A postcard. A very long walk.</p>
-  <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 4.9c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg>Coming soon to iPhone and iPad</span>
+  <div class="inner">
+    <div class="copy">
+      <img class="logo" src="/a-walk-in-the-park/img/logo.svg" alt="A Walk in the Park">
+      <p class="tag">Lem the pigeon has never seen the ocean.</p>
+      <p class="sub">Place the blocks, press Play and watch Lem walk.<br>80+ puzzles. No ads. No timers. No flying.</p>
+      <a class="badge js-store" href="#" aria-label="Download on the App Store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 4.9c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg>
+        <span><small>Download on the</small><b>App Store</b></span>
+      </a>
+    </div>
+  </div>
 </header>
 
 <section>
-  <div class="wrap story">
+  <div class="wrap narrow story">
     <img src="/a-walk-in-the-park/img/icon.png" alt="Lem the pigeon">
     <div>
-      <h2>Lem has never seen the ocean.</h2>
-      <p>Nobody at the park has. There's only a postcard under the bench that says WISH YOU WERE HERE. So Lem picks a morning and starts walking. Flying would be simpler. Lem doesn't fly.</p>
-      <p>Place a few blocks, press play, and watch Lem go. Every level is a small puzzle with one good idea in it. Get it, and it feels obvious.</p>
+      <h2>Lem is a pigeon who has never seen the ocean.</h2>
+      <p>Nobody at the park has. There's only a postcard of it under the bench that says WISH YOU WERE HERE.</p>
+      <blockquote>"When you don't know, act as though."<cite>Grandma's advice for this</cite></blockquote>
+      <p>So Lem picks a morning and starts walking. Flying would simplify things. Lem doesn't fly.</p>
     </div>
+  </div>
+</section>
+
+<section class="plays">
+  <div class="wrap">
+    <div class="lede">
+      <div>
+        <h2>How it plays</h2>
+        <p>Lem walks straight ahead, turns around at walls and doesn't take directions. You place blocks on the board, press Play and watch what happens. Get Lem to the key, then to the lock.</p>
+        <p>If it goes wrong, your blocks return to where you placed them and you try something else. Nothing depends on timing or fast fingers, so take as long as you like.</p>
+      </div>
+      <figure class="clip">
+        <video class="js-clip" src="/a-walk-in-the-park/video/canyon.mp4" poster="/a-walk-in-the-park/video/canyon.jpg" muted loop playsinline preload="metadata" aria-label="Gameplay: a level in The Canyon"></video>
+      </figure>
+    </div>
+    <div class="clips">
+      <figure>
+        <div class="clip"><video class="js-clip" src="/a-walk-in-the-park/video/boss-1.mp4" poster="/a-walk-in-the-park/video/boss-1.jpg" muted loop playsinline preload="none" aria-label="Gameplay: a later level"></video></div>
+        <figcaption>Statues, buttons and a row of spikes.</figcaption>
+      </figure>
+      <figure>
+        <div class="clip"><video class="js-clip" src="/a-walk-in-the-park/video/boss-2.mp4" poster="/a-walk-in-the-park/video/boss-2.jpg" muted loop playsinline preload="none" aria-label="Gameplay: the same level, another attempt"></video></div>
+        <figcaption>Same level, different idea.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The blocks</h2>
+    <div class="cast"><img src="/a-walk-in-the-park/img/cast.jpg" alt="Lem with a statue, a crumbler, a teleport, a lock and a mover" loading="lazy"></div>
+    <div class="blocks">
+      <div><b>Teleports</b><p>Work in pairs. Lem enters one and exits the other.</p></div>
+      <div><b>Crumblers</b><p>Hold up until Lem steps off. Then they're gone.</p></div>
+      <div><b>Movers</b><p>Give Lem a ride along their path. Next visit, they ride back.</p></div>
+      <div><b>Spikes</b><p>End the run if Lem gets on top. The sides are just a wall.</p></div>
+      <div><b>Statues</b><p>Stay up until Lem steps on a button. Then every statue goes down.</p></div>
+      <div><b>Pushers</b><p>Get pushed one square at a time and drop off edges.</p></div>
+    </div>
+    <p class="after">Each new block comes with a short tip the first time you meet it. After that, the blocks start doing jobs they don't look built for. The later levels are properly hard, and the answer usually rests on an idea you didn't try first.</p>
   </div>
 </section>
 
 <section style="padding-top:0">
   <div class="wrap">
-    <h2>One long walk</h2>
+    <h2>The walk</h2>
+    <p class="muted" style="margin-bottom:24px">80+ levels across 8 worlds, each with its own world and atmosphere.</p>
     <div class="worlds">
-      <figure><img src="/a-walk-in-the-park/img/picnic.jpg" alt="" loading="lazy"><figcaption><b>The Picnic</b>Lunch with strangers. Try to look invited.</figcaption></figure>
-      <figure><img src="/a-walk-in-the-park/img/quarry.jpg" alt="" loading="lazy"><figcaption><b>The Quarry</b>Blue water. Entirely the wrong kind.</figcaption></figure>
-      <figure><img src="/a-walk-in-the-park/img/factory.jpg" alt="" loading="lazy"><figcaption><b>The Factory</b>A smiling cookie is not a guarantee.</figcaption></figure>
-      <figure><img src="/a-walk-in-the-park/img/scrapyard.jpg" alt="" loading="lazy"><figcaption><b>The Scrapyard</b>Beware of dog. Trust the rat.</figcaption></figure>
-      <figure><img src="/a-walk-in-the-park/img/canal.jpg" alt="" loading="lazy"><figcaption><b>The Canal</b>Someone knows the way. Ask.</figcaption></figure>
-      <figure><img src="/a-walk-in-the-park/img/coast.jpg" alt="" loading="lazy"><figcaption><b>The Coast</b>The postcard left most of it out.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/park.jpg" alt="Lem on a park path at sunset" loading="lazy"><figcaption><b>The Park</b>A pigeon. A postcard. A very long walk.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/picnic.jpg" alt="Lem at a picnic blanket with a puppy" loading="lazy"><figcaption><b>The Picnic</b>Lunch with strangers. Try to look invited.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/quarry.jpg" alt="Lem at the edge of a quarry lake" loading="lazy"><figcaption><b>The Quarry</b>Blue water. Entirely the wrong kind.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/factory.jpg" alt="Lem on a pipe overlooking a factory" loading="lazy"><figcaption><b>The Factory</b>A smiling cookie is not a guarantee.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/scrapyard.jpg" alt="Lem in a scrapyard at night" loading="lazy"><figcaption><b>The Scrapyard</b>Beware of dog. Trust the rat.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/canal.jpg" alt="Lem beside a canal with a heron" loading="lazy"><figcaption><b>The Canal</b>Someone knows the way. Ask.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/canyon.jpg" alt="Lem walking through a desert canyon" loading="lazy"><figcaption><b>The Canyon</b>Bring water. Lem didn't.</figcaption></figure>
+      <figure><img src="/a-walk-in-the-park/img/coast.jpg" alt="Lem on a cliff above the ocean" loading="lazy"><figcaption><b>The Coast</b>The postcard left most of it out.</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0">
-  <div class="wrap facts">
+  <div class="wrap narrow facts">
     <div><b>8</b><span>worlds</span></div>
     <div><b>80+</b><span>puzzles</span></div>
-    <div><b>0</b><span>ads, accounts or tracking</span></div>
+    <div><b>0</b><span>ads, timers or tracking</span></div>
+  </div>
+</section>
+
+<section class="made" style="padding-top:0">
+  <div class="wrap narrow">
+    <h2>How it was made</h2>
+    <p>A Walk in the Park was hand-made with AI. It was built by an engineer, but none of the code was written by hand. The game is assembled from component parts, like generic block types that inherit special abilities. AI played a large part in the music too; the melody, orchestration, and lyrics are all original.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Wish you were here</h2>
+    <p>80+ puzzles. No ads. No timers. No flying.</p>
+    <a class="badge js-store" href="#" aria-label="Download on the App Store">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 4.9c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg>
+      <span><small>Download on the</small><b>App Store</b></span>
+    </a>
   </div>
 </section>
 
@@ -99,6 +248,28 @@
   <a href="mailto:hello@taylorbayouth.com">Contact</a>
   <div style="margin-top:12px">&copy; 2026 Bayouth Ventures, LLC</div>
 </footer>
+
+<script>
+  // App Store links
+  var live = !/X{4,}/.test(window.APP_STORE_URL);
+  document.querySelectorAll('.js-store').forEach(function (a) {
+    if (live) { a.href = window.APP_STORE_URL; } else { a.removeAttribute('href'); a.style.cursor = 'default'; }
+  });
+
+  // Play clips only while on screen
+  var clips = document.querySelectorAll('.js-clip');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !still) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.play().catch(function () {}); } else { e.target.pause(); }
+      });
+    }, { threshold: 0.35 });
+    clips.forEach(function (v) { io.observe(v); });
+  } else {
+    clips.forEach(function (v) { v.controls = true; });
+  }
+</script>
 
 </body>
 </html>
